@@ -1,8 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 class Versenytav {
     private String rajtSzam;
@@ -135,5 +133,22 @@ class Versenyzo {
             System.out.println("        Név: " + gyoztes.getNev());
             System.out.println("        Egyesület: " + gyoztes.getEgyesulet());
             System.out.println("        Idő: " + gyoztes.getIdo());
+
+            HashMap<String, Integer> celbaErkezok = new HashMap<>();
+            for (Versenyzo versenyzo : versenyzoList) {
+                if (!versenyzo.isNo()) {
+                    String kulcs = versenyzo.getKategoria();
+                    Integer aktualisErtek = celbaErkezok.get(kulcs);
+                    if (aktualisErtek == null) {
+                        celbaErkezok.put(kulcs, 1);
+                    } else {
+                        celbaErkezok.put(kulcs, aktualisErtek + 1);
+                    }
+                }
+            }
+            System.out.println("8. feladat: Statisztika");
+            for (Map.Entry<String, Integer> bejegyzes : celbaErkezok.entrySet()) {
+                System.out.println("        " + bejegyzes.getKey() + " - " + bejegyzes.getValue() + "fő");
+            }
         }
     }
