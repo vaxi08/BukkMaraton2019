@@ -122,5 +122,18 @@ class Versenyzo {
             }
             String eredmenySzoveg = volt ? "6. feladat: Volt ilyen versenyző " : "6. feladat: Nem volt ilyen versenyző";
             System.out.println(eredmenySzoveg);
+
+            Versenyzo gyoztes = null;
+            for (Versenyzo aktualisVersenyzo : versenyzoList) {
+                if (!aktualisVersenyzo.isNo() && aktualisVersenyzo.getKategoria().equals("ff") && aktualisVersenyzo.getVersenytav().equals("Rövid"))
+                    if (gyoztes == null || aktualisVersenyzo.getOsszIdoMasodpercben() < gyoztes.getOsszIdoMasodpercben()) {
+                        gyoztes = aktualisVersenyzo;
+                    }
+            }
+            System.out.println("7. feladat: A felnőtt férfi (ff) kategória győztese rövid távon");
+            System.out.println("        Rajtszám: " + gyoztes.getRajtszam());
+            System.out.println("        Név: " + gyoztes.getNev());
+            System.out.println("        Egyesület: " + gyoztes.getEgyesulet());
+            System.out.println("        Idő: " + gyoztes.getIdo());
         }
     }
