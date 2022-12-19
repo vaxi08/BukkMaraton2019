@@ -112,5 +112,15 @@ class Versenyzo {
                 }
             }
             System.out.println("5. feladat: Női versenyzők száma a rövid távú versenyen: " + noiRovidDarabszam + "fő");
+
+            boolean volt = false;
+            for (Versenyzo versenyzo : versenyzoList) {
+                if (versenyzo.getOrakSzama() >= 6) {
+                    volt = true;
+                    break;
+                }
+            }
+            String eredmenySzoveg = volt ? "6. feladat: Volt ilyen versenyző " : "6. feladat: Nem volt ilyen versenyző";
+            System.out.println(eredmenySzoveg);
         }
     }
